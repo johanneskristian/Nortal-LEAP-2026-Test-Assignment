@@ -32,6 +32,9 @@ public class LibraryService {
     if (!canMemberBorrow(memberId)) {
       return Result.failure("BORROW_LIMIT");
     }
+    if (book.get().getLoanedTo() != null) {
+          return Result.failure("BOOK_ALREADY_LOANED");
+    }
     Book entity = book.get();
     entity.setLoanedTo(memberId);
     entity.setDueDate(LocalDate.now().plusDays(DEFAULT_LOAN_DAYS));
