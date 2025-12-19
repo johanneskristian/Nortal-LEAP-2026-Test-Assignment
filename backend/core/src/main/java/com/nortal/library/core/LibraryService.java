@@ -35,6 +35,12 @@ public class LibraryService {
     if (book.get().getLoanedTo() != null) {
           return Result.failure("BOOK_ALREADY_LOANED");
     }
+
+    List<String> queue = book.get().getReservationQueue();
+    if (queue != null && !queue.isEmpty() && !queue.getFirst().equals(memberId)) {
+        return Result.failure("BOOK_RESERVED_FOR_ANOTHER_USER");
+    }
+
     Book entity = book.get();
     entity.setLoanedTo(memberId);
     entity.setDueDate(LocalDate.now().plusDays(DEFAULT_LOAN_DAYS));
