@@ -55,6 +55,11 @@ public class LibraryService {
     }
 
     Book entity = book.get();
+
+    if (!entity.getLoanedTo().equals(memberId)) {
+      return ResultWithNext.failure();
+    }
+
     entity.setLoanedTo(null);
     entity.setDueDate(null);
     String nextMember =
