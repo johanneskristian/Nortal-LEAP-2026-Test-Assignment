@@ -62,8 +62,22 @@ public class LibraryService {
 
     entity.setLoanedTo(null);
     entity.setDueDate(null);
+
+    List<String> queue = entity.getReservationQueue();
+    while (!queue.isEmpty()) {
+        if (canMemberBorrow(queue.get(0))) {
+            break;
+        }
+        queue.remove(0);
+    }
+
     String nextMember =
         entity.getReservationQueue().isEmpty() ? null : entity.getReservationQueue().get(0);
+
+    if (nextMember != null) {
+        entity.setLoanedTo(nextMember);
+        entity.getReservationQueue().remove(0);
+    }
     bookRepository.save(entity);
     return ResultWithNext.success(nextMember);
   }

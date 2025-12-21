@@ -9,3 +9,5 @@ I struggled to understand why my code was not working and kept returning invalid
 I used AI to help debug the issue and discovered that the problem was related to the frontend sending an incorrect memberId. 
 Since the assignment allowed changes only to the backend, I was very confused for a long time. I joined the Nortal assignment Discord where many others had the same issue,
 and I decided to modify the frontend so that the returnBook method sends the correct memberId value.
+
+I had implemented automatic borrowing to eligible reservers but did not know how to skip ineligible members and continue. So I asked AI how and figured out what I needed to add in front of my implemented feature to skip ineligible members.
