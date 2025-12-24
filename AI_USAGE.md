@@ -17,4 +17,4 @@ Since the assignment allowed changes only to the backend, I was very confused fo
 (Keep the queue consistent when handoffs happen.) - Did not use AI
 
 # Borrow-limit enforcement & clarity
-This was really hard for me. After a long time googling how to do it and my code not working, I decided to use Gemini AI to find out how to approach implementing borrow limit enforcement. It helped me replace the inefficient findAll() with a more efficient countByLoanedTo method in the repository.
+I used Gemini to refactor Borrow-limit enforcement: Replaced the inefficient findAll() approach with a more efficient countByLoanedTo method in the repository.
